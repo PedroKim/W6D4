@@ -5,8 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
 
-user1 = User.create(name: "Peter Kim", email: "kim.taihyung@gmail.com")
+user1 = User.create(username: "peter")
 10.times do |index|
-    User.create(name: "user_#{index}", email: "user#{index}_email@email.com")
+    User.create(username: "user_#{index}")
 end
