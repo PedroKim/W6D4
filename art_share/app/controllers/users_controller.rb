@@ -6,7 +6,17 @@ class UsersController < ApplicationController
     # a hash of all parameters available.
 
     def index
-        render json: User.all
+        all_users = User.all
+
+        if params[:user_id]
+            user = all_users.find(params[:user_id])
+            render json: user
+        elsif params[:username]
+            user = all_users.where('username LIKE ?', '%' + params[:username] + '%')
+            render json: user
+        else
+            render json: all_users
+        end
     end
 
     def show
