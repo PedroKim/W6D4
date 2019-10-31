@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # delete 'users/:id', to: 'users#destroy'
   # resources :users #above routes get created with this one command.
   
-  resources :users
-
+  resources :users, only: [:index, :show, :create, :update, :destroy] do
+    resources :artworks, only: :index
+  end
+  resources :artworks, only: [:index, :show, :create, :update, :destroy]
+  resources :artwork_shares, only: [:create, :destroy]
 end
